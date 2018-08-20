@@ -1,0 +1,54 @@
+include "109.mayu" # 109 キーボード設定 
+
+keymap Global
+
+mod ctrl += !!Eisuu
+# key *Eisuu= C-C
+key *Eisuu= Esc
+
+mod shift += !!LeftShift
+mod shift += !!BackSlash
+key *LeftShift = HankakuZenkaku
+
+mod windows += !!Tab
+key *Tab = Tab
+
+key *S-C-*A-H = Left
+key *S-C-*A-I = Tab
+key *S-C-*A-J = Down
+key *S-C-*A-K = Up
+key *S-C-*A-L = Right
+key *S-C-*A-M = C-C C-C o
+
+key S-*_2 = ~S-*Atmark
+key S-*_6 = $CIRCUMFLEX_ACCENT
+key S-*_7 = $AMPERSAND
+key S-*_8 = $ASTERISK
+key S-*_9 = $LEFT_PARENTHESIS
+key S-*_0 = $RIGHT_PARENTHESIS
+key S-*Minus = $LOW_LINE
+key ~S-*CircumflexAccent = $EQUALS_SIGN
+key S-*CircumflexAccent = $PLUS_SIGN
+key *Atmark = *OpenBracket
+key *OpenBracket = *CloseBracket
+key S-*Semicolon = $COLON
+key ~S-*Colon = $APOSTROPHE
+key S-*Colon = $QUOTATION_MARK
+# key *CloseBracket = *Enter
+key *CloseBracket = *Yen
+key *BackSlash = *RightShift
+key *Henkan = *Space
+key *Muhenkan = *Space
+key *Hiragana = *RightAlt
+key ~S-*HankakuZenkaku = $GRAVE_ACCENT
+key S-*HankakuZenkaku = $TILDE
+
+key S-C-Semicolon  = &Toggle(Lock0, on)
+
+# 割り当ての解放
+key L0-*S-C-*A-H   = C-H
+key L0-*S-C-*A-I   = C-I
+key L0-*S-C-*A-J   = C-J
+key L0-*S-C-*A-K   = C-K
+key L0-*S-C-*A-L   = C-L
+# key L0-S-C-Apostrophe = &Toggle(Lock0, off)

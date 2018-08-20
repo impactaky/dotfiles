@@ -1,0 +1,13 @@
+[Unit]
+Description = mayu
+After = basic.target
+
+[Service]
+Type = simple
+User = root
+ExecStart = MAYU_DIR/mayu.sh
+RemainAfterExit = yes
+Restart = always
+
+[Install]
+WantedBy = multi-user.target

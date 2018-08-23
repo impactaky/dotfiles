@@ -270,3 +270,7 @@ function put_epo(){
 }
 zle -N put_epo
 bindkey '^e' put_epo
+
+if type rustup &> /dev/null ; then
+	export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+fi

@@ -113,7 +113,6 @@ setopt complete_aliases     # aliased ls needs if file/dir completions work
 alias where="command -v"
 alias j="jobs -l"
 alias grep="grep --color=auto"
-alias rg="ripgrep"
 [ $(where nvim) ] && alias vim="nvim"
 
 alias -s py='python3'

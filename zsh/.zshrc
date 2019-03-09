@@ -264,6 +264,7 @@ Prompt2Pattern="^>"
 PromptLines=`echo $PROMPT | wc -l`
 SearchLines=`tmux show-options -gv history-limit`
 alias epo="echo_previous_output"
+alias epon='echo_previous_output | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"'
 function put_epo(){
 	echo "epo | " | anyframe-action-put
 }

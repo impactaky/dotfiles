@@ -274,3 +274,5 @@ bindkey '^e' put_epo
 if type rustup &> /dev/null ; then
 	export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 fi
+
+export PATH=$HOME/bin:$HOME/.go/bin:$PATH

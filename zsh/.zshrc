@@ -113,7 +113,16 @@ setopt complete_aliases     # aliased ls needs if file/dir completions work
 alias where="command -v"
 alias j="jobs -l"
 alias grep="grep --color=auto"
-[ $(where nvim) ] && alias vim="nvim"
+
+if [ $(where nvim) ]; then
+    alias vim="nvim"
+    export EDITOR='nvim'
+    export MANPAGER="/bin/sh -c \"col -b -x| nvim -R -c 'set ft=man nolist nonu noma' -\""
+else
+    export EDITOR='vim'
+    export MANPAGER="/bin/sh -c \"col -b -x| vim -R -c 'set ft=man nolist nonu noma' -\""
+fi
+
 
 alias -s py='python3'
 alias -s rb='ruby'
@@ -194,9 +203,6 @@ esac
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-
-## for tmuxinator
-export EDITOR='vim'
 
 if [[ ! -o interactive ]]; then
     return

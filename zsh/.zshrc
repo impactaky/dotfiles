@@ -282,3 +282,4 @@ if type rustup &> /dev/null ; then
 fi
 
 export PATH=$HOME/bin:$HOME/.go/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH

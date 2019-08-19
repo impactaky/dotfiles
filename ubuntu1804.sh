@@ -8,5 +8,5 @@ sudo apt install -y \
 sudo pip3 install neovim
 sudo pip3 install xonsh pexpect
 
-sudo apt install clang-7 clang-format-7 clang-tidy-7 \
-    libclang-7-dev lld-7 lldb-7 llvm-7-dev ninja-build
+sudo apt install clang-8 clang-format-8 clang-tidy-8 \
+    libclang-8-dev lld-8 lldb-8 llvm-8-dev ninja-build

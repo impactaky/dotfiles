@@ -6,7 +6,7 @@ UseFontLineChararacters=true
 [General]
 Command=/bin/zsh
 LocalTabTitleFormat=
-Name=Profile #1
+Name=プロファイル “1”
 Parent=FALLBACK/
 RemoteTabTitleFormat=
 

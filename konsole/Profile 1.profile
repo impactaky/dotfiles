@@ -1,6 +1,6 @@
 [Appearance]
 ColorScheme=tommorow_night
-Font=PragmataPro,28,-1,5,50,0,0,0,0,0
+Font=PragmataPro,18,-1,5,50,0,0,0,0,0
 UseFontLineChararacters=true
 
 [General]

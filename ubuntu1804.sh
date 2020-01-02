@@ -1,5 +1,6 @@
 #!/bin/bash -eu
 
+sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt update
 sudo apt install -y \
 	git neovim python3 python3-pip \

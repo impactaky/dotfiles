@@ -3,10 +3,9 @@ MAYU_DIR=`readlink -f $0`
 MAYU_DIR=`dirname $MAYU_DIR`
 
 # install
-git clone https://github.com/kenhys/mayu /tmp/mayu
+git clone https://github.com/HiroakiMikami/mayu /tmp/mayu
 cd /tmp/mayu
 ./configure --with-boost-libdir=/usr/lib/x86_64-linux-gnu/
-sed -i -e "s/\(^CXXFLAGS.*\)$/\1 -std=c++98/" Makefile
 make
 sudo porg -lp mayu "make install"
 if [ `localectl status | awk '/Layout/{print $NF}'` = "jp" ]; then

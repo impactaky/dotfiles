@@ -234,13 +234,21 @@ fpath=($HOME/.ghq/github.com/mollifier/anyframe(N-/) $fpath)
 autoload -Uz anyframe-init
 anyframe-init
 
+function anyframe-widget-execute-history-multiline () {
+  history -n -r 1 \
+    | anyframe-selector-auto \
+    | sed 's/\\\\n/\n/g' \
+    | anyframe-action-execute
+}
+zle -N anyframe-widget-execute-history-multiline
+
 zstyle ':chpwd:*' recent-dirs-max 5000
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
 bindkey '^f' anyframe-widget-cdr
 bindkey '^x^b' anyframe-widget-checkout-git-branch
 
-bindkey '^r' anyframe-widget-execute-history
+bindkey '^r' anyframe-widget-execute-history-multiline
 
 bindkey '^xi' anyframe-widget-put-history
 bindkey '^x^i' anyframe-widget-put-history

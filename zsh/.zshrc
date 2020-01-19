@@ -258,6 +258,15 @@ function anyframe-widget-favorite-history () {
 zle -N anyframe-widget-favorite-history
 bindkey '^o' anyframe-widget-favorite-history
 
+function anyframe-widget-vim-runcommand () {
+  history -n -r 1 \
+    | anyframe-selector-auto \
+    | sed 's/\\\\n/\n/g' \
+    > .run_command.sh
+}
+zle -N anyframe-widget-vim-runcommand
+bindkey '^v' anyframe-widget-vim-runcommand
+
 bindkey '^xi' anyframe-widget-put-history
 bindkey '^x^i' anyframe-widget-put-history
 

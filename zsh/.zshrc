@@ -308,3 +308,12 @@ fi
 
 export PATH=$HOME/bin:$HOME/.go/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
+
+source ~/Documents/sandbox/useful_ssh-agent.zsh/useful_ssh-agent.zsh
+
+# useful_ssh-agent.zsh
+alias setup_ssh=check_ssh-agent_and_execute
+alias ssh='check_ssh-agent_and_execute && ssh'
+alias scp='check_ssh-agent_and_execute && scp'
+alias rsync='check_ssh-agent_and_execute && rsync'
+alias sshfs='check_ssh-agent_and_execute && sshfs'

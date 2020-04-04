@@ -127,16 +127,7 @@ alias -s py='python3'
 alias -s rb='ruby'
 alias -s xsh='xonsh'
 
-case "${OSTYPE}" in
-freebsd*|darwin*)
-    alias ls="ls -G -w"
-    ;;
-linux*)
-    alias ls="ls --color"
-    ;;
-esac
-
-
+alias ls="ls --color=auto"
 alias la="ls -a"
 alias lf="ls -F"
 alias ll="ls -l"
@@ -314,3 +305,5 @@ alias ssh='check_ssh-agent_and_execute && ssh'
 alias scp='check_ssh-agent_and_execute && scp'
 alias rsync='check_ssh-agent_and_execute && rsync'
 alias sshfs='check_ssh-agent_and_execute && sshfs'
+
+alias dhrun='docker run --rm -it --user=$(id -u):$(id -g) --volume=/etc/group:/etc/group:ro --volume=/etc/passwd:/etc/passwd:ro --volume=/etc/shadow:/etc/shadow:ro -v=$HOME:$HOME --workdir=$(pwd)'

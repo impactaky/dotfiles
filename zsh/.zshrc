@@ -213,6 +213,8 @@ _tmuxinator() {
   reply=("${(ps:\n:)completions}")
 }
 
+export CMDLINE_COMP_GEN_ZSH_CONFIG_DIR=$HOME/.zsh/cmdline_comp_gen
+
 # zplug
 source ~/.zsh/zplug_conf.zsh
 
@@ -321,3 +323,4 @@ fuction notify_to_tmux_window_name () {
 }
 
 alias N="notify_to_tmux_window_name"
+alias cmake="cmake -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_EXPORT_COMPILE_COMMANDS=1"

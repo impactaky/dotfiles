@@ -1,6 +1,7 @@
 [Unit]
 Description = mayu
 After = basic.target
+After = suspend.target
 
 [Service]
 Type = simple

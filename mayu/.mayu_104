@@ -6,8 +6,7 @@ mod ctrl += !!CapsLock
 # key *CapsLock= C-C
 key *CapsLock= Esc
 
-mod shift += !!LeftShift
-key *LeftShift= W-C-Home
+key *S-*C-A-Space = W-C-Home
 
 mod windows += !!Tab
 key *Tab = Tab

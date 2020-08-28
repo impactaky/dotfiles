@@ -17,5 +17,5 @@ echo deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-9 main \
 echo deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic-9 main \
    | sudo tee -a /etc/apt/sources.list
 sudo apt update
-sudo apt install clang-9 clang-format-9 clang-tidy-9 clang-tools-9 clangd-9 \
-    libclang-9-dev lld-9 
+sudo apt install clang-10 clang-format-10 clang-tidy-10 clang-tools-10 clangd-10 \
+    libclang-10-dev lld-10

@@ -1,0 +1,97 @@
+terminal:
+  colorScheme:
+    name: Tomorrow Night
+    foreground: '#c5c8c6'
+    background: '#1d1f21'
+    cursor: '#c5c8c688'
+    colors:
+      - '#000000'
+      - '#cc6666'
+      - '#b5bd68'
+      - '#f0c674'
+      - '#81a2be'
+      - '#b294bb'
+      - '#8abeb7'
+      - '#ffffff'
+      - '#000000'
+      - '#cc6666'
+      - '#b5bd68'
+      - '#f0c674'
+      - '#81a2be'
+      - '#b294bb'
+      - '#8abeb7'
+      - '#ffffff'
+  font: PragmataPro Liga
+  fontSize: 36
+  frontend: hterm
+  ligatures: true
+  cursor: block
+  cursorBlink: false
+  background: colorScheme
+  environment: {}
+  profile: zsh
+  customColorSchemes:
+    - name: Base16 Default Dark
+      foreground: '#d8d8d8'
+      background: '#181818'
+      cursor: '#88888888'
+      colors:
+        - '#181818'
+        - '#ab4642'
+        - '#a1b56c'
+        - '#f7ca88'
+        - '#7cafc2'
+        - '#ba8baf'
+        - '#86c1b9'
+        - '#d8d8d8'
+        - '#585858'
+        - '#ab4642'
+        - '#a1b56c'
+        - '#f7ca88'
+        - '#7cafc2'
+        - '#ba8baf'
+        - '#86c1b9'
+        - '#f8f8f8'
+        - '#dc9656'
+        - '#a16946'
+        - '#282828'
+        - '#383838'
+        - '#b8b8b8'
+        - '#e8e8e8'
+    - name: Tomorrow Night
+      foreground: '#c5c8c6'
+      background: '#1d1f21'
+      cursor: '#c5c8c688'
+      colors:
+        - '#000000'
+        - '#cc6666'
+        - '#b5bd68'
+        - '#f0c674'
+        - '#81a2be'
+        - '#b294bb'
+        - '#8abeb7'
+        - '#ffffff'
+        - '#000000'
+        - '#cc6666'
+        - '#b5bd68'
+        - '#f0c674'
+        - '#81a2be'
+        - '#b294bb'
+        - '#8abeb7'
+        - '#ffffff'
+hotkeys:
+  profile: {}
+  shell: {}
+  paste:
+    - - Shift-Insert
+  next-tab:
+    - - Ctrl-Super-L
+  previous-tab:
+    - - Ctrl-Super-H
+serial: {}
+ssh:
+  connections: []
+appearance: {}
+enableAnalytics: false
+enableWelcomeTab: false
+pluginBlacklist: []

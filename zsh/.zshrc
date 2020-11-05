@@ -324,3 +324,7 @@ fuction notify_to_tmux_window_name () {
 
 alias N="notify_to_tmux_window_name"
 alias cmake="cmake -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
+
+function latest () {
+    ls -t $@ | head -n 1
+}

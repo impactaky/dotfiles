@@ -328,3 +328,7 @@ alias cmake="cmake -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNC
 function latest () {
     ls -t $@ | head -n 1
 }
+
+function seps () {
+    sed 's/[\t ]\+/\t/g' | cut $@
+}

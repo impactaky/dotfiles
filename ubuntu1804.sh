@@ -9,7 +9,7 @@ sudo apt install -y \
 sudo pip3 install -U pip
 sudo pip3 install cmake
 sudo pip3 install pynvim
-sudo pip3 install xonsh pexpect
+sudo pip3 install xonsh pexpect python-language-server
 
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
 echo deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-9 main \

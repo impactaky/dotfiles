@@ -215,8 +215,8 @@ _tmuxinator() {
 
 export CMDLINE_COMP_GEN_ZSH_CONFIG_DIR=$HOME/.zsh/cmdline_comp_gen
 
-# zplug
-source ~/.zsh/zplug_conf.zsh
+# zinit
+source $HOME/.zsh/zinit_conf.zsh
 
 # ghq
 export GOPATH=$HOME/.go
@@ -331,4 +331,8 @@ function latest () {
 
 function seps () {
     sed 's/[\t ]\+/\t/g' | cut $@
+}
+
+function vp () {
+    ex -s "$@" +%p +q! /dev/stdin
 }

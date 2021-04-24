@@ -10,6 +10,7 @@ zinit ice from"gh-r" as"program" mv"ripgrep*/rg -> ripgrep"
 zinit light BurntSushi/ripgrep
 zinit ice as"program" pick"git-foresta"
 zinit light takaaki-kasai/git-foresta
+zinit ice atload"zicompinit"
 zinit light impactaky/cmdline_comp_gen.zsh
 zinit light impactaky/echo_previous_output
 zinit light impactaky/useful_ssh-agent.zsh

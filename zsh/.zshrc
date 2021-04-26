@@ -282,10 +282,6 @@ alias dhcrun='docker run --rm -it --net=host --user=$(id -u):$(id -g) --volume=/
 alias dhrun_armhf='docker run --rm -it --net=host --user=$(id -u):$(id -g) --volume=/etc/group:/etc/group:ro --volume=/etc/passwd:/etc/passwd:ro --volume=/etc/shadow:/etc/shadow:ro -v=$HOME/armhf:$HOME -v=$HOME/Documents:$HOME/Documents -v=$HOME/office:$HOME/office -v=/mnt:/mnt --workdir=$(pwd)'
 dob () { docker build --target $1 -t localhost:5000/$1 ${@:2} }
 
-if [ -e $HOME/.zsh/local.zshrc ]; then
-	source $HOME/.zsh/local.zshrc
-fi
-
 # echo_previous_outpt
 PromptCmdLinePattern='└─\['
 Prompt2Pattern="^>"
@@ -336,3 +332,8 @@ function seps () {
 function vp () {
     ex -s "$@" +%p +q! /dev/stdin
 }
+
+if [ -e $HOME/.zsh/local.zshrc ]; then
+	source $HOME/.zsh/local.zshrc
+fi
+

@@ -30,6 +30,8 @@ case ${UID} in
     ;;
 esac
 
+setopt no_beep
+
 # auto change directory
 #
 setopt auto_cd
@@ -336,4 +338,3 @@ function vp () {
 if [ -e $HOME/.zsh/local.zshrc ]; then
 	source $HOME/.zsh/local.zshrc
 fi
-

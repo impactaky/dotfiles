@@ -338,3 +338,6 @@ function vp () {
 if [ -e $HOME/.zsh/local.zshrc ]; then
 	source $HOME/.zsh/local.zshrc
 fi
+
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"

@@ -79,6 +79,7 @@ terminal:
         - '#b294bb'
         - '#8abeb7'
         - '#ffffff'
+  searchOptions: {}
 hotkeys:
   profile: {}
   shell: {}

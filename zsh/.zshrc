@@ -388,7 +388,11 @@ function prompt-length() {
 
 precmd() {
     local gitprompt=$(_zsh_git_prompt_git_status)
-    local left="$BLUE""[$GREEN%m$BLUE] - [$WHITE%~$BLUE]$gitprompt$BLUE"
+    local dockerprompt=""
+    if [[ -f /.dockerenv ]]; then
+        dockerprompt=" - [${GREEN}in Docker$BLUE]"
+    fi
+    local left="$BLUE""[$GREEN%m$BLUE]$dockerprompt - [$WHITE%~$BLUE]$gitprompt$BLUE"
     # local right="$BLUE""[%b$WHITE%?$BLUE] - [%b$WHITE%D{%H:%M:%S}$BLUE]"
     local right="$BLUE""[%b$WHITE%D{%H:%M:%S}$BLUE]"
     prompt-length $left

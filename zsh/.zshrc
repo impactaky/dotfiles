@@ -279,14 +279,14 @@ export MANPAGER="/bin/sh -c \"col -b -x| nvim -R -c 'set ft=man nolist nonu noma
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # source ~/.tmuxinator/tmuxinator.zsh
 
-alias dhrun='docker run --rm -it --net=host --user=$(id -u):$(id -g) --volume=/etc/group:/etc/group:ro --volume=/etc/passwd:/etc/passwd:ro --volume=/etc/shadow:/etc/shadow:ro -v=$HOME/x86_64_home:$HOME -v=$HOME/Documents:$HOME/Documents -v=$HOME/office:$HOME/office -v=/mnt:/mnt --workdir=$(pwd)'
+alias dhrun='docker run --rm -it --net=host --user=$(id -u):$(id -g) --volume=/etc/group:/etc/group:ro --volume=/etc/passwd:/etc/passwd:ro --volume=/etc/shadow:/etc/shadow:ro -v=$HOME/x86_64_home:$HOME -v=/mnt:/mnt -v=$HOME/Documents:$HOME/Documents -v=$HOME/office:$HOME/office -v=/mnt:/mnt --workdir=$(pwd)'
 alias dhcrun='docker run --rm -it --net=host --user=$(id -u):$(id -g) --volume=/etc/group:/etc/group:ro --volume=/etc/passwd:/etc/passwd:ro --volume=/etc/shadow:/etc/shadow:ro -v=$HOME/aarch64_home:$HOME -v=$HOME/Documents:$HOME/Documents -v=$HOME/office:$HOME/office -v=/mnt:/mnt --workdir=$(pwd)'
 alias dhrun_armhf='docker run --rm -it --net=host --user=$(id -u):$(id -g) --volume=/etc/group:/etc/group:ro --volume=/etc/passwd:/etc/passwd:ro --volume=/etc/shadow:/etc/shadow:ro -v=$HOME/armhf:$HOME -v=$HOME/Documents:$HOME/Documents -v=$HOME/office:$HOME/office -v=/mnt:/mnt --workdir=$(pwd)'
 dob () { docker build --target $1 -t localhost:5000/$1 ${@:2} }
 
 # echo_previous_outpt
-PromptCmdLinePattern='└─\['
-Prompt2Pattern="^>"
+PromptCmdLinePattern='\['
+Prompt2Pattern="$"
 PromptLines=`echo $PROMPT | wc -l`
 SearchLines=`tmux show-options -gv history-limit`
 alias epo="echo_previous_output"
@@ -341,3 +341,60 @@ fi
 
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+
+zmodload zsh/zpty
+
+BLUE=%B%{$fg[blue]%}
+WHITE=%{$fg[white]%}
+GREEN=%{$fg[green]%}
+RESET=%{$reset_color%}
+
+ZSH_GIT_PROMPT_SHOW_UPSTREA="no"
+ZSH_GIT_PROMPT_NO_ASYNC=1
+
+ZSH_THEME_GIT_PROMPT_PREFIX=" - ["
+ZSH_THEME_GIT_PROMPT_SUFFIX="$BLUE]"
+ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
+ZSH_THEME_GIT_PROMPT_DETACHED="%{$fg_bold[cyan]%}:"
+ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
+ZSH_THEME_GIT_PROMPT_UPSTREAM_SYMBOL="%{$fg_bold[yellow]%}⟳ "
+ZSH_THEME_GIT_PROMPT_UPSTREAM_PREFIX="%{$fg[red]%}(%{$fg[yellow]%}"
+ZSH_THEME_GIT_PROMPT_UPSTREAM_SUFFIX="%{$fg[red]%})"
+ZSH_THEME_GIT_PROMPT_BEHIND="↓"
+ZSH_THEME_GIT_PROMPT_AHEAD="↑"
+ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[red]%}✘"
+ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}●"
+ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg[red]%}✚"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="."
+ZSH_THEME_GIT_PROMPT_STASHED="%{$fg[blue]%}⚑"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
+
+function prompt-length() {
+  emulate -L zsh
+  local -i COLUMNS=${2:-COLUMNS}
+  local -i x y=${#1} m
+  if (( y )); then
+    while (( ${${(%):-$1%$y(l.1.0)}[-1]} )); do
+      x=y
+      (( y *= 2 ))
+    done
+    while (( y > x + 1 )); do
+      (( m = x + (y - x) / 2 ))
+      (( ${${(%):-$1%$m(l.x.y)}[-1]} = m ))
+    done
+  fi
+  typeset -g REPLY=$x
+}
+
+precmd() {
+    local gitprompt=$(_zsh_git_prompt_git_status)
+    local left="$BLUE""[$GREEN%m$BLUE] - [$WHITE%~$BLUE]$gitprompt$BLUE"
+    local right="$BLUE""[%b$WHITE%?$BLUE] - [%b$WHITE%D{%H:%M:%S}$BLUE]"
+    prompt-length $left
+    local -i left_len=REPLY
+    prompt-length $right
+    local -i right_len=REPLY
+    PROMPT=$left${(r:($COLUMNS-$left_len-$right_len):: :)}$right
+    PROMPT+=$'\n'"$ $RESET"
+}
+RPROMPT=""

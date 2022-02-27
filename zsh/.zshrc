@@ -400,6 +400,6 @@ precmd() {
     prompt-length $right
     local -i right_len=REPLY
     PROMPT=$left${(r:($COLUMNS-$left_len-$right_len):: :)}$right
-    PROMPT+=$'\n'"$ $RESET"
+    PROMPT+=%{$fg[magenta]%}$'\n'"$ $RESET"
 }
 RPROMPT=""

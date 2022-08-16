@@ -335,6 +335,7 @@ function vp () {
     ex -s "$@" +%p +q! /dev/stdin
 }
 
+eval "$(direnv hook zsh)"
 if [ -e $HOME/.zsh/local.zshrc ]; then
 	source $HOME/.zsh/local.zshrc
 fi

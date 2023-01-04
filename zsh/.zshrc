@@ -345,6 +345,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 
 zmodload zsh/zpty
 
+RED=%B%{$fg[red]%}
 BLUE=%B%{$fg[blue]%}
 WHITE=%{$fg[white]%}
 GREEN=%{$fg[green]%}
@@ -354,7 +355,6 @@ ZSH_GIT_PROMPT_SHOW_UPSTREA="no"
 ZSH_GIT_PROMPT_NO_ASYNC=1
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" - ["
-ZSH_THEME_GIT_PROMPT_SUFFIX="$BLUE]"
 ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
 ZSH_THEME_GIT_PROMPT_DETACHED="%{$fg_bold[cyan]%}:"
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
@@ -388,14 +388,21 @@ function prompt-length() {
 }
 
 precmd() {
+    local ret=$?
+    if [[ ret -eq 0 ]]; then
+        local BASE="${BLUE}"
+    else
+        local BASE="${RED}"
+    fi
+    ZSH_THEME_GIT_PROMPT_SUFFIX="${BASE}]"
     local gitprompt=$(_zsh_git_prompt_git_status)
     local dockerprompt=""
     if [[ -f /.dockerenv ]]; then
-        dockerprompt=" - [${GREEN}in Docker$BLUE]"
+        dockerprompt=" - [${GREEN}in Docker${BASE}]"
     fi
-    local left="$BLUE""[$GREEN%m$BLUE]$dockerprompt - [$WHITE%~$BLUE]$gitprompt$BLUE"
+    local left="$BASE""[$GREEN%m$BASE]$dockerprompt - [$WHITE%~${BASE}]$gitprompt${BASE}"
     # local right="$BLUE""[%b$WHITE%?$BLUE] - [%b$WHITE%D{%H:%M:%S}$BLUE]"
-    local right="$BLUE""[%b$WHITE%D{%H:%M:%S}$BLUE]"
+    local right="${BASE}""[%b$WHITE%D{%H:%M:%S}${BASE}]"
     prompt-length $left
     local -i left_len=REPLY
     prompt-length $right

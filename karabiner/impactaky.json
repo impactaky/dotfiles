@@ -1,0 +1,66 @@
+{
+  "title": "impactaky settings",
+  "rules": [
+    {
+      "description": "Single caps lock bind to Esc and combination behavior as control key",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "caps_lock",
+            "modifiers": { "optional": [ "any" ] }
+          },
+          "to": [
+            {
+              "key_code": "left_control",
+              "lazy": true
+            }
+          ],
+          "to_if_alone": [
+            { "key_code": "escape" }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "tab",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "tab",
+            "modifiers": { "optional": [ "any" ] }
+          },
+          "to": [
+            {
+              "key_code": "left_control",
+              "modifiers": [ "shift", "option" ],
+              "lazy": true
+            }
+          ],
+          "to_if_alone": [
+            { "key_code": "tab" }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Toggle IME settings",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "spacebar",
+            "modifiers": { "mandatory": [ "left_option" ] }
+          },
+          "to": [
+            {
+              "key_code": "spacebar",
+              "modifiers": [ "left_command" ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

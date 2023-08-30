@@ -280,7 +280,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # source ~/.tmuxinator/tmuxinator.zsh
 
 alias dhnrun='docker run --rm -it --net=host --group-add=sudo --user=$(id -u):$(id -g) --volume=/etc/group:/etc/group:ro --volume=/etc/passwd:/etc/passwd:ro --volume=/etc/shadow:/etc/shadow:ro -v=$HOME:$HOME -v=/mnt:/mnt -v=$HOME/Documents:$HOME/Documents -v=$HOME/office:$HOME/office -v=/mnt:/mnt --workdir=$(pwd)'
-alias dhrun='docker run --rm -it --net=host --group-add=sudo --user=$(id -u):$(id -g) --volume=/etc/group:/etc/group:ro --volume=/etc/passwd:/etc/passwd:ro --volume=/etc/shadow:/etc/shadow:ro -v=$HOME/x86_64_home:$HOME -v=/mnt:/mnt -v=$HOME/Documents:$HOME/Documents -v=$HOME/office:$HOME/office -v=/mnt:/mnt --workdir=$(pwd)'
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    alias dhrun='docker run --rm -it --net=host --group-add=sudo --user=$(id -u):$(id -g) --volume=/etc/group:/etc/group:ro --volume=/etc/passwd:/etc/passwd:ro --volume=/etc/shadow:/etc/shadow:ro -v=$HOME/x86_64_home:/home/$USER.linux -v=/mnt:/mnt -v=$HOME/Documents:$HOME/Documents -v=$HOME/office:$HOME/office -v=/mnt:/mnt --workdir=$(pwd)'
+else
+    alias dhrun='docker run --rm -it --net=host --group-add=sudo --user=$(id -u):$(id -g) --volume=/etc/group:/etc/group:ro --volume=/etc/passwd:/etc/passwd:ro --volume=/etc/shadow:/etc/shadow:ro -v=$HOME/x86_64_home:$HOME -v=/mnt:/mnt -v=$HOME/Documents:$HOME/Documents -v=$HOME/office:$HOME/office -v=/mnt:/mnt --workdir=$(pwd)'
+fi
 alias dhcrun='docker run --rm -it --net=host --group-add=sudo --user=$(id -u):$(id -g) --volume=/etc/group:/etc/group:ro --volume=/etc/passwd:/etc/passwd:ro --volume=/etc/shadow:/etc/shadow:ro -v=$HOME/aarch64_home:$HOME -v=$HOME/Documents:$HOME/Documents -v=$HOME/office:$HOME/office -v=/mnt:/mnt --workdir=$(pwd)'
 alias dhrun_armhf='docker run --rm -it --net=host --group-add=sudo --user=$(id -u):$(id -g) --volume=/etc/group:/etc/group:ro --volume=/etc/passwd:/etc/passwd:ro --volume=/etc/shadow:/etc/shadow:ro -v=$HOME/armhf:$HOME -v=$HOME/Documents:$HOME/Documents -v=$HOME/office:$HOME/office -v=/mnt:/mnt --workdir=$(pwd)'
 dob () { docker build --target $1 -t localhost:5000/$1 ${@:2} }
@@ -396,7 +400,8 @@ precmd() {
         local BASE="${RED}"
     fi
     ZSH_THEME_GIT_PROMPT_SUFFIX="${BASE}]"
-    local gitprompt=$(_zsh_git_prompt_git_status)
+    # local gitprompt=$(_zsh_git_prompt_git_status)
+    local gitprompt=""
     local dockerprompt=""
     if [[ -f /.dockerenv ]]; then
         dockerprompt=" - [${GREEN}in Docker${BASE}]"

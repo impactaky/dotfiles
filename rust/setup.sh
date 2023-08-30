@@ -1,11 +1,8 @@
 #!/bin/sh
 
-curl https://sh.rustup.rs -sSf | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup install nightly
 rustup override set nightly
 rustup default nightly
-rustup component add rustfmt-preview
-rustup component add rls-preview rust-analysis rust-src
-cargo install racer
-cargo install xargo
-
+rustup component add rust-analyzer-preview
+cargo install cargo-edit

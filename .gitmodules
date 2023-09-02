@@ -1,0 +1,3 @@
+[submodule "zenlog/zenlog"]
+	path = zenlog/zenlog
+	url = https://github.com/omakoto/zenlog

@@ -10,25 +10,8 @@ case ${UID} in
  ;;
 esac
 
-
-## Default shell configuration
-#
-# set prompt
-#
 autoload colors
 colors
-case ${UID} in
-0)
-	PROMPT="%root:%n%% "
-	RPROMPT="[%~]"
-	SPROMPT="correct: %R -> %r ? "
-    ;;
-*)
-	PROMPT="%n%% "
-	RPROMPT="[%~]"
-	SPROMPT="correct: %R -> %r ? "
-    ;;
-esac
 
 setopt no_beep
 
@@ -290,10 +273,10 @@ alias dhrun_armhf='docker run --rm -it --net=host --group-add=sudo --user=$(id -
 dob () { docker build --target $1 -t localhost:5000/$1 ${@:2} }
 
 # echo_previous_outpt
-PromptCmdLinePattern='\['
-Prompt2Pattern="$"
-PromptLines=`echo $PROMPT | wc -l`
-SearchLines=`tmux show-options -gv history-limit`
+PromptCmdLinePattern="${HOST%%.*}"
+Prompt2Pattern="\\$ "
+PromptLines=1
+SearchLines=1000
 alias epo="echo_previous_output"
 alias epon='echo_previous_output | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"'
 function put_epo(){

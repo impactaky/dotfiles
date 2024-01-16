@@ -17,5 +17,9 @@ zinit light impactaky/useful_ssh-agent.zsh
 zinit light woefe/git-prompt.zsh
 zinit ice as"program"
 zinit light "impactaky/code_for_another_session"
-zinit ice from"gh-r" as"program" mv"hadolint* -> hadolint"
-zinit light hadolint/hadolint
+
+# These package install homebrew in macOS
+if [[ "$(uname -s)" != "Darwin" ]]; then
+  zinit ice from"gh-r" as"program" mv"hadolint* -> hadolint"
+  zinit light hadolint/hadolint
+fi

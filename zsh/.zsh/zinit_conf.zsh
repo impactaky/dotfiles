@@ -14,6 +14,7 @@ zinit ice compile'{*.zsh,^_*},!(<->N)'
 zinit light impactaky/cmdline_comp_gen.zsh
 zinit light impactaky/echo_previous_output
 zinit light impactaky/useful_ssh-agent.zsh
+zinit light impactaky/durun.zsh
 zinit light woefe/git-prompt.zsh
 zinit ice as"program"
 zinit light "impactaky/code_for_another_session"

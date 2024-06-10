@@ -201,6 +201,7 @@ _tmuxinator() {
 export CMDLINE_COMP_GEN_ZSH_CONFIG_DIR=$HOME/.zsh/cmdline_comp_gen
 
 # zinit
+export DURUN_HOME=/mnt/ext1/rootfs
 source $HOME/.zsh/zinit_conf.zsh
 
 # ghq

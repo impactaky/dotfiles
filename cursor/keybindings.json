@@ -1,0 +1,138 @@
+// Place your key bindings in this file to override the defaults
+[
+{
+    "key": "ctrl+o",
+    "command": "-editor.action.lineBreakInsert", 
+    "when": "editorTextFocus"
+},
+{
+    "key": "f12",
+    "command": "-editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+},
+{
+    "key": "cmd+down",
+    "command": "-revealReference",
+    "when": "listFocus && referenceSearchVisible && !inputFocus && !treeElementCanCollapse && !treeElementCanExpand"
+},
+{
+    "key": "ctrl+p",
+    "command": "-cursorUp",
+    "when": "textInputFocus"
+},
+{
+    "command": "vscode-neovim.send",
+    "key": "ctrl+p",
+    "when": "editorTextFocus && neovim.init && neovim.mode != insert && neovim.ctrlKeysNormal",
+    "args": "<C-p>"
+},
+{
+    "key": "ctrl+n",
+    "command": "-cursorDown",
+    "when": "textInputFocus"
+},
+{
+    "command": "vscode-neovim.send",
+    "key": "ctrl+n",
+    "when": "editorTextFocus && neovim.init && neovim.mode != insert && neovim.ctrlKeysNormal",
+    "args": "<C-n>"
+},
+{
+    "key": "shift+5",
+    "command": "editor.action.jumpToBracket",
+    "when": "editorTextFocus && neovim.init && neovim.mode != insert"
+},
+{
+    "key": "shift+cmd+\\",
+    "command": "-editor.action.jumpToBracket",
+    "when": "editorTextFocus"
+},
+{
+    "key": "cmd+t cmd+t",
+    "command": "workbench.panel.testResults.view.focus"
+},
+{
+    "key": "cmd+= cmd+=",
+    "command": "-codealignment.alignbyequals",
+    "when": "editorTextFocus"
+},
+{
+    "key": "cmd+= cmd+.",
+    "command": "-codealignment.alignbyperiod",
+    "when": "editorTextFocus"
+},
+{
+    "key": "cmd+= cmd+'",
+    "command": "-codealignment.alignbyquote",
+    "when": "editorTextFocus"
+},
+{
+    "key": "cmd+= cmd+space",
+    "command": "-codealignment.alignbyspace",
+    "when": "editorTextFocus"
+},
+{
+    "key": "shift+cmd+=",
+    "command": "-codealignment.alignbystring",
+    "when": "editorTextFocus"
+},
+{
+    "key": "cmd+= shift+cmd+=",
+    "command": "-codealignment.alignbyequalsfromcaret",
+    "when": "editorTextFocus"
+},
+{
+    "key": "cmd+= shift+cmd+'",
+    "command": "-codealignment.alignbyquotefromcaret",
+    "when": "editorTextFocus"
+},
+{
+    "key": "ctrl+shift+alt+t",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+},
+{
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+},
+{
+    "key": "cmd+t",
+    "command": "-workbench.action.showAllSymbols"
+},
+{
+    "key": "cmd+p",
+    "command": "-expandLineSelection",
+    "when": "textInputFocus"
+},
+{
+    "key": "shift+cmd+v",
+    "command": "-markdown.showPreview",
+    "when": "!notebookEditorFocused && editorLangId == 'markdown'"
+},
+{
+    "key": "cmd+k v",
+    "command": "-markdown.showPreviewToSide",
+    "when": "!notebookEditorFocused && editorLangId == 'markdown'"
+},
+{
+    "key": "cmd+b",
+    "command": "workbench.action.toggleAuxiliaryBar"
+},
+{
+    "key": "alt+cmd+b",
+    "command": "-workbench.action.toggleAuxiliaryBar"
+},
+{
+    "key": "ctrl+shift+alt+v",
+    "command": "markdown.showPreviewToSide"
+},
+{
+    "key": "ctrl+shift+alt+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+},
+{
+    "key": "cmd+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+}
+]

@@ -41,4 +41,12 @@
         "coverage.cobertura.xml"
     ],
     "redhat.telemetry.enabled": false,
+    "dev.containers.defaultFeatures": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": true,
+            "installOhMyZsh": false,
+            "upgradePackages": false,
+        }
+    },
+    "dotfiles.repository": "https://github.com/impactaky/dotfiles",
 }

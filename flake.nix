@@ -14,6 +14,7 @@
     packages.${system}.default = nixpkgs.legacyPackages.${system}.buildEnv {
       name = "impactaky-dotfiles";
       paths = with nixpkgs.legacyPackages.${system}; [
+        atuin
         gh
         git
         neovim

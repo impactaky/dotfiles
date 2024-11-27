@@ -17,10 +17,13 @@
         atuin
         gh
         git
+        httpie
+        lazydocker
         neovim
         nushell
         ripgrep
         starship
+        thefuck
         tmux
         uv
       ];

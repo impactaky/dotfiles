@@ -15,6 +15,7 @@
       name = "impactaky-dotfiles";
       paths = with nixpkgs.legacyPackages.${system}; [
         atuin
+        fzf
         gh
         git
         httpie
@@ -26,6 +27,7 @@
         thefuck
         tmux
         uv
+        zoxide
       ];
     };
   };

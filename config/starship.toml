@@ -1,0 +1,36 @@
+scan_timeout = 10
+
+format = '''$status[\[$hostname\] - \[$directory\]$git_branch$fill\[$time\]](bold blue)
+[\$](bold purple) 
+'''
+add_newline = false
+
+[hostname]
+format = '[$hostname](bold green)'
+
+[directory]
+format = '[$path](bold white)'
+truncation_length = 100
+truncate_to_repo = false
+truncation_symbol = "…/"
+
+[status]
+format = "[-> Command Failed: $code\n](red bold)"
+disabled = false
+
+[time]
+format = '[$time](bold white)'
+disabled = false
+
+[username]
+disabled = true
+
+[git_branch]
+format = ' - [\[[$branch](bold white)\]](bold blue)'
+
+[git_state]
+disabled = true
+
+[git_commit]
+disabled = true
+

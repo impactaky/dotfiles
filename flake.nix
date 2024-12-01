@@ -15,6 +15,7 @@
       name = "impactaky-dotfiles";
       paths = with nixpkgs.legacyPackages.${system}; [
         atuin
+        deno
         fzf
         gh
         git

@@ -1,6 +1,8 @@
 $env.PATH = ($env.PATH | prepend ($env.DOTFILES | path join "result" "bin"))
 let config_dir = $env.DOTFILES | path join "config"
 alias tmux = tmux -f ($config_dir | path join "tmux" "tmux.conf")
+alias vim = nvim
+$env.NIX_CONF_DIR = $config_dir | path join "nix"
 
 $env.ATUIN_CONFIG_DIR = $env.DOTFILES | path join "config" "atuin"
 source ./atuin.nu

@@ -1,3 +1,6 @@
 [submodule "zenlog/zenlog"]
 	path = zenlog/zenlog
 	url = https://github.com/omakoto/zenlog
+[submodule "third_party/nupm"]
+	path = third_party/nupm
+	url = https://github.com/nushell/nupm

@@ -3,3 +3,6 @@ zsh/.zsh/local.zshrc
 *.swp
 rtags/rtags
 result
+config/zsh/local.zshrc
+config/zsh/cmdline_compgen
+config/zsh/.zcompdump

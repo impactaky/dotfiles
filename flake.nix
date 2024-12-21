@@ -22,13 +22,16 @@
         httpie
         lazydocker
         neovim
+        nufmt
         nushell
         ripgrep
         starship
         thefuck
         tmux
         uv
+        zinit
         zoxide
+        zsh
       ];
     };
   };

@@ -4,5 +4,6 @@ zsh/.zsh/local.zshrc
 rtags/rtags
 result
 config/zsh/local.zshrc
+config/zsh/cmdline_comp_gen
 config/zsh/cmdline_compgen
 config/zsh/.zcompdump

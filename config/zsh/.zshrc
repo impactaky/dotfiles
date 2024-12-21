@@ -171,14 +171,6 @@ xterm|xterm-color|kterm|kterm-color)
     ;;
 esac
 
-## load user .zshrc configuration file
-#
-[ -f ${HOME}/.zshrc.mine ] && source ${HOME}/.zshrc.mine
-
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-
 if [[ ! -o interactive ]]; then
     return
 fi
@@ -198,17 +190,12 @@ _tmuxinator() {
   reply=("${(ps:\n:)completions}")
 }
 
-export CMDLINE_COMP_GEN_ZSH_CONFIG_DIR=$HOME/.zsh/cmdline_comp_gen
+export CMDLINE_COMP_GEN_ZSH_CONFIG_DIR=$DOTFILES/config/zsh/cmdline_comp_gen
 
 # zinit
 export DURUN_HOME=/mnt/ext1/rootfs
-source $HOME/.zsh/zinit_conf.zsh
+source $DOTFILES/config/zsh/zinit_conf.zsh
 
-# ghq
-export GOPATH=$HOME/.go
-export PATH=$HOME/.go/bin:$PATH
-# anyframe
-fpath=($HOME/.ghq/github.com/mollifier/anyframe(N-/) $fpath)
 autoload -Uz anyframe-init
 anyframe-init
 
@@ -290,9 +277,6 @@ if type rustup &> /dev/null ; then
 	export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 fi
 
-export PATH=$HOME/bin:$HOME/.go/bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
-
 # useful_ssh-agent.zsh
 alias setup_ssh=check_ssh-agent_and_execute
 alias ssh='check_ssh-agent_and_execute && ssh'
@@ -325,12 +309,9 @@ function vp () {
 }
 
 eval "$(direnv hook zsh)"
-if [ -e $HOME/.zsh/local.zshrc ]; then
-	source $HOME/.zsh/local.zshrc
+if [ -e $DOTFILES/config/zsh/local.zshrc ]; then
+	source $DOTFILES/config/zsh/local.zshrc
 fi
-
-export DENO_INSTALL="$HOME/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
 
 zmodload zsh/zpty
 
@@ -401,3 +382,6 @@ precmd() {
     PROMPT+=%{$fg[magenta]%}$'\n'"$ $RESET"
 }
 RPROMPT=""
+
+export PATH="$DOTFILES/result/bin:$PATH"
+source $DOTFILES/config/zsh/alias.zsh

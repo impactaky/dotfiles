@@ -1,6 +1,6 @@
 declare -A ZINIT
 ZINIT[HOME_DIR]=$DOTFILES/cache/zinit
-source $DOTFILES/third_party/zinit/zinit.zsh
+source $DOTFILES/result/share/zinit/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 

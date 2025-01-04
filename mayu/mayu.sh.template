@@ -1,4 +1,0 @@
-#!/bin/bash
-
-env HOME=HOME_DIR \
-/usr/local/bin/mayu 

@@ -7,3 +7,14 @@
 [merge]
     tool = nvimdiff
     conflictstyle = diff3
+
+[user]
+    email = impactaky@users.noreply.github.com
+    name = impactaly
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+

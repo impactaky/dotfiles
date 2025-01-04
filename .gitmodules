@@ -4,3 +4,6 @@
 [submodule "third_party/nupm"]
 	path = third_party/nupm
 	url = https://github.com/nushell/nupm
+[submodule "cache/dein/repos/github.com/Shougo/dein.vim"]
+	path = cache/dein/repos/github.com/Shougo/dein.vim
+	url = https://github.com/Shougo/dein.vim

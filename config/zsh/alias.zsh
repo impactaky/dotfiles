@@ -1,3 +1,5 @@
+export XDG_CONFIG_HOME="$DOTFILES/config"
+
 alias tmux="tmux -f $DOTFILES/config/tmux/tmux.conf"
 
 export NIX_CONF_DIR="$DOTFILES/config/nix"

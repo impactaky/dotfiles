@@ -1,38 +1,34 @@
 {
   description = "dotfile requirements";
 
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-  };
+  inputs = { nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable"; };
 
-  outputs = {
-     self,
-     nixpkgs,
-  }: let
-		system = "aarch64-linux";
-	in {
-    packages.${system}.default = nixpkgs.legacyPackages.${system}.buildEnv {
-      name = "impactaky-dotfiles";
-      paths = with nixpkgs.legacyPackages.${system}; [
-        atuin
-        deno
-        fzf
-        gh
-        git
-        httpie
-        lazydocker
-        neovim
-        nufmt
-        nushell
-        ripgrep
-        starship
-        thefuck
-        tmux
-        uv
-        zinit
-        zoxide
-        zsh
-      ];
+  outputs = { self, nixpkgs, }:
+    let system = "aarch64-linux";
+    in {
+      packages.${system}.default = nixpkgs.legacyPackages.${system}.buildEnv {
+        name = "impactaky-dotfiles";
+        paths = with nixpkgs.legacyPackages.${system}; [
+          atuin
+          deno
+          fzf
+          gh
+          git
+          httpie
+          lazydocker
+          neovim
+          nufmt
+          nushell
+          nixfmt
+          ripgrep
+          starship
+          thefuck
+          tmux
+          uv
+          zinit
+          zoxide
+          zsh
+        ];
+      };
     };
-  };
 }

@@ -1,0 +1,61 @@
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'impactaky/add_title_to_url.vim'
+depends = ['denops.vim']
+hook_add = '''
+    vmap 'm <Plug>(add_title_to_url)
+'''
+
+[[plugins]]
+repo = 'impactaky/deepl.nvim'
+hook_add = '''
+vmap <Leader>j :call deepl#replace_to_translated_text('', 'JA')<CR>gvgq
+vmap <Leader>e :call deepl#replace_to_translated_text('', 'EN')<CR>gvgq
+nmap <Leader>j vip:call deepl#replace_to_translated_text('', 'JA')<CR>gvgq
+nmap <Leader>e vip:call deepl#replace_to_translated_text('', 'EN')<CR>gvgq
+'''
+
+[[plugins]]
+repo = 'impactaky/radix.vim'
+hook_add = '''
+nmap <Space>b <Plug>(radix-toBin)
+nmap <Space>d <Plug>(radix-toDec)
+nmap <Space>x <Plug>(radix-toHex)
+'''
+
+[[plugins]]
+repo = 'impactaky/xonsh2py.nvim'
+lazy = 1
+hook_add = '''
+    nmap ;p <Plug>(xonsh2py)
+'''
+
+[[plugins]]
+repo = 'kana/vim-repeat'
+
+[[plugins]]
+repo = 'kana/vim-operator-user'
+
+[[plugins]]
+repo = 'rhysd/accelerated-jk'
+hook_add = '''
+    runtime plugin_conf/accelerated-jk.vim
+	nmap j <Plug>(accelerated_jk_j)
+	nmap k <Plug>(accelerated_jk_k)
+'''
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'LeafCage/yankround.vim'
+hook_add = '''
+	nmap gp <Plug>(yankround-gp)
+	nmap gP <Plug>(yankround-gP)
+	nmap p <Plug>(yankround-p)
+	nmap P <Plug>(yankround-P)
+	nmap <C-n> <Plug>(yankround-next)
+	nmap <C-p> <Plug>(yankround-prev)
+'''

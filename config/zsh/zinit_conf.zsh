@@ -7,10 +7,6 @@ autoload -Uz _zinit
 zinit light mollifier/anyframe
 zinit ice from"gh-r" as"program" pick"*/peco"
 zinit light peco/peco
-zinit ice from"gh-r" as"program" mv"ripgrep*/rg -> ripgrep"
-zinit light BurntSushi/ripgrep
-zinit ice as"program" pick"git-foresta"
-zinit light takaaki-kasai/git-foresta
 zinit ice atload"zicompinit"
 zinit ice compile'{*.zsh,^_*},!(<->N)'
 zinit light impactaky/cmdline_comp_gen.zsh

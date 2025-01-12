@@ -8,3 +8,5 @@ config/zsh/cmdline_comp_gen
 config/zsh/cmdline_compgen
 config/zsh/.zcompdump
 cache
+state
+share

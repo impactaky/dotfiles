@@ -26,7 +26,6 @@
             thefuck
             tmux
             uv
-            zinit
             zoxide
             zsh
           ];

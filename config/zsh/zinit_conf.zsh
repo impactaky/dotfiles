@@ -1,8 +1,13 @@
-declare -A ZINIT
-ZINIT[HOME_DIR]=$DOTFILES/cache/zinit
-source $DOTFILES/result/share/zinit/zinit.zsh
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
+#declare -A ZINIT
+#ZINIT[HOME_DIR]=$DOTFILES/cache/zinit
+#source $DOTFILES/result/share/zinit/zinit.zsh
+#autoload -Uz _zinit
+#(( ${+_comps} )) && _comps[zinit]=_zinit
+#
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
 
 zinit light mollifier/anyframe
 zinit ice from"gh-r" as"program" pick"*/peco"

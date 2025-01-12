@@ -267,8 +267,18 @@ fi
 
 zmodload zsh/zpty
 
+eval "$(fzf --zsh)"
 eval "$(starship init zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
-eval "$(zoxide init zsh --cmd zo)"
-zle -N zoi
-bindkey '^f' zoi
+eval "$(zoxide init zsh)"
+zoxide_fzf() {
+  local dir
+  dir=$(zoxide query -l | fzf --reverse --height 80% --border rounded)
+  if [ -n "$dir" ]; then
+    zoxide add "$dir"
+    cd "$dir"
+  fi
+  zle reset-prompt
+}
+zle -N zoxide_fzf
+bindkey '^f' zoxide_fzf

@@ -196,54 +196,6 @@ export CMDLINE_COMP_GEN_ZSH_CONFIG_DIR=$DOTFILES/config/zsh/cmdline_comp_gen
 export DURUN_HOME=/mnt/ext1/rootfs
 source $DOTFILES/config/zsh/zinit_conf.zsh
 
-autoload -Uz anyframe-init
-anyframe-init
-
-zstyle ':chpwd:*' recent-dirs-max 5000
-autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-add-zsh-hook chpwd chpwd_recent_dirs
-bindkey '^f' anyframe-widget-cdr
-bindkey '^x^b' anyframe-widget-checkout-git-branch
-
-function anyframe-widget-execute-history-multiline () {
-  history -n -r 1 \
-    | anyframe-selector-auto \
-    | sed 's/\\\\n/\n/g' \
-    | anyframe-action-execute
-}
-zle -N anyframe-widget-execute-history-multiline
-bindkey '^r' anyframe-widget-execute-history-multiline
-
-function anyframe-widget-favorite-history () {
-  history -n -r 1 \
-    | anyframe-selector-auto \
-    | sed 's/\\\\n/\n/g' \
-    >> $MY_PRIVATE_DIR/history
-}
-zle -N anyframe-widget-favorite-history
-bindkey '^o' anyframe-widget-favorite-history
-
-function anyframe-widget-vim-runcommand () {
-  history -n -r 1 \
-    | anyframe-selector-auto \
-    | sed 's/\\\\n/\n/g' \
-    > .run_command.sh
-}
-zle -N anyframe-widget-vim-runcommand
-bindkey '^v' anyframe-widget-vim-runcommand
-
-bindkey '^xi' anyframe-widget-put-history
-bindkey '^x^i' anyframe-widget-put-history
-
-bindkey '^xg' anyframe-widget-cd-ghq-repository
-bindkey '^x^g' anyframe-widget-cd-ghq-repository
-
-bindkey '^xk' anyframe-widget-kill
-bindkey '^x^k' anyframe-widget-kill
-
-bindkey '^xe' anyframe-widget-insert-git-branch
-bindkey '^x^e' anyframe-widget-insert-git-branch
-
 export MANPAGER="/bin/sh -c \"col -b -x| nvim -R -c 'set ft=man nolist nonu noma' -\""
 
 # 大文字小文字を区別しない
@@ -383,5 +335,7 @@ precmd() {
 }
 RPROMPT=""
 
-export PATH="$DOTFILES/result/bin:$PATH"
-source $DOTFILES/config/zsh/alias.zsh
+eval "$(atuin init zsh --disable-up-arrow)"
+eval "$(zoxide init zsh --cmd zo)"
+zle -N zoi
+bindkey '^f' zoi

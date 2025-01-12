@@ -49,4 +49,5 @@
         }
     },
     "dotfiles.repository": "https://github.com/impactaky/dotfiles",
+    "zig.zls.enabled": "on",
 }

@@ -267,74 +267,7 @@ fi
 
 zmodload zsh/zpty
 
-RED=%B%{$fg[red]%}
-BLUE=%B%{$fg[blue]%}
-WHITE=%{$fg[white]%}
-GREEN=%{$fg[green]%}
-RESET=%{$reset_color%}
-
-ZSH_GIT_PROMPT_SHOW_UPSTREA="no"
-ZSH_GIT_PROMPT_NO_ASYNC=1
-
-ZSH_THEME_GIT_PROMPT_PREFIX=" - ["
-ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
-ZSH_THEME_GIT_PROMPT_DETACHED="%{$fg_bold[cyan]%}:"
-ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
-ZSH_THEME_GIT_PROMPT_UPSTREAM_SYMBOL="%{$fg_bold[yellow]%}⟳ "
-ZSH_THEME_GIT_PROMPT_UPSTREAM_PREFIX="%{$fg[red]%}(%{$fg[yellow]%}"
-ZSH_THEME_GIT_PROMPT_UPSTREAM_SUFFIX="%{$fg[red]%})"
-ZSH_THEME_GIT_PROMPT_BEHIND="↓"
-ZSH_THEME_GIT_PROMPT_AHEAD="↑"
-ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[red]%}✘"
-ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}●"
-ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg[red]%}✚"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="."
-ZSH_THEME_GIT_PROMPT_STASHED="%{$fg[blue]%}⚑"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
-
-function prompt-length() {
-  emulate -L zsh
-  local -i COLUMNS=${2:-COLUMNS}
-  local -i x y=${#1} m
-  if (( y )); then
-    while (( ${${(%):-$1%$y(l.1.0)}[-1]} )); do
-      x=y
-      (( y *= 2 ))
-    done
-    while (( y > x + 1 )); do
-      (( m = x + (y - x) / 2 ))
-      (( ${${(%):-$1%$m(l.x.y)}[-1]} = m ))
-    done
-  fi
-  typeset -g REPLY=$x
-}
-
-precmd() {
-    local ret=$?
-    if [[ ret -eq 0 ]]; then
-        local BASE="${BLUE}"
-    else
-        local BASE="${RED}"
-    fi
-    ZSH_THEME_GIT_PROMPT_SUFFIX="${BASE}]"
-    # local gitprompt=$(_zsh_git_prompt_git_status)
-    local gitprompt=""
-    local dockerprompt=""
-    if [[ -f /.dockerenv ]]; then
-        dockerprompt=" - [${GREEN}in Docker${BASE}]"
-    fi
-    local left="$BASE""[$GREEN%m$BASE]$dockerprompt - [$WHITE%~${BASE}]$gitprompt${BASE}"
-    # local right="$BLUE""[%b$WHITE%?$BLUE] - [%b$WHITE%D{%H:%M:%S}$BLUE]"
-    local right="${BASE}""[%b$WHITE%D{%H:%M:%S}${BASE}]"
-    prompt-length $left
-    local -i left_len=REPLY
-    prompt-length $right
-    local -i right_len=REPLY
-    PROMPT=$left${(r:($COLUMNS-$left_len-$right_len):: :)}$right
-    PROMPT+=%{$fg[magenta]%}$'\n'"$ $RESET"
-}
-RPROMPT=""
-
+eval "$(starship init zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
 eval "$(zoxide init zsh --cmd zo)"
 zle -N zoi

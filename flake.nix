@@ -12,6 +12,7 @@
           paths = with nixpkgs.legacyPackages.${system}; [
             atuin
             deno
+            direnv
             fzf
             gh
             git

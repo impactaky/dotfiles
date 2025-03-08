@@ -39,6 +39,12 @@ if filereadable("./local.vimrc")
 	source ./local.vimrc
 endif
 
+if !isdirectory(expand("$XDG_CACHE_HOME/dein/repos/github.com/Shougo/dein.vim"))
+  echo "Initializing dein.vim..."
+  call mkdir(expand("$XDG_CACHE_HOME/dein/repos/github.com/Shougo"), "p")
+  call system("git clone https://github.com/Shougo/dein.vim " . expand("$XDG_CACHE_HOME/dein/repos/github.com/Shougo/dein.vim"))
+endif
+
 set runtimepath^=$XDG_CACHE_HOME/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state("$XDG_CACHE_HOME/dein")
 	call dein#begin("$XDG_CACHE_HOME/dein")

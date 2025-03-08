@@ -39,15 +39,15 @@ if filereadable("./local.vimrc")
 	source ./local.vimrc
 endif
 
-set runtimepath^=$DOTFILES/cache/dein/repos/github.com/Shougo/dein.vim
-if dein#load_state("$DOTFILES/cache/dein")
-	call dein#begin("$DOTFILES/cache/dein")
-    call dein#load_toml("$DOTFILES/config/nvim/common.toml")
+set runtimepath^=$XDG_CACHE_HOME/dein/repos/github.com/Shougo/dein.vim
+if dein#load_state("$XDG_CACHE_HOME/dein")
+	call dein#begin("$XDG_CACHE_HOME/dein")
+    call dein#load_toml("$XDG_CONFIG_HOME/nvim/common.toml")
     if !exists('g:vscode')
-        call dein#load_toml("$DOTFILES/config/nvim/dein.toml")
+        call dein#load_toml("$XDG_CONFIG_HOME/nvim/dein.toml")
     endif
-	if filereadable(expand("$DOTFILES/config/nvim/local.toml"))
-		call dein#load_toml("$DOTFILES/config/nvim/local.toml")
+	if filereadable(expand("$XDG_CONFIG_HOME/nvim/local.toml"))
+		call dein#load_toml("$XDG_CONFIG_HOME/nvim/local.toml")
 	endif
 	call dein#end()
 endif
